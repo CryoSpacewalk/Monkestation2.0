@@ -817,12 +817,6 @@ GLOBAL_LIST_EMPTY(features_by_species)
 
 	var/obj/item/bodypart/head/noggin = source.get_bodypart(BODY_ZONE_HEAD)
 
-	if(mutant_bodyparts["tail_vox"])
-		if(source.wear_suit && (source.wear_suit.flags_inv & HIDEJUMPSUIT))
-			bodyparts_to_add -= "tail_vox"
-	if(mutant_bodyparts["spines_vox"])
-		if(!source.dna.features["spines_vox"] || source.dna.features["spines_vox"] == "None" || source.wear_suit && (source.wear_suit.flags_inv & HIDEJUMPSUIT))
-			bodyparts_to_add -= "spines_vox"
 	if(mutant_bodyparts["ears"])
 		if(!source.dna.features["ears"] || source.dna.features["ears"] == "None" || source.head && (source.head.flags_inv & HIDEHAIR) || (source.wear_mask && (source.wear_mask.flags_inv & HIDEHAIR)) || !noggin || !IS_ORGANIC_LIMB(noggin))
 			bodyparts_to_add -= "ears"
@@ -848,19 +842,11 @@ GLOBAL_LIST_EMPTY(features_by_species)
 					accessory = GLOB.caps_list[source.dna.features["caps"]]
 				if("ipc_screen")
 					accessory = GLOB.ipc_screens_list[source.dna.features["ipc_screen"]]
-				if("tail_vox")
-					accessory = GLOB.tails_list_vox[source.dna.features["tail_vox"]]
-				if("spines_vox")
-					accessory = GLOB.spines_list_vox[source.dna.features["spines_vox"]]
 
 			if(!accessory || accessory.icon_state == "none")
 				continue
 
 			var/mutable_appearance/accessory_overlay = mutable_appearance(accessory.icon, layer = -layer)
-
-			//A little rename so we don't have to use tail_lizard or tail_human when naming the sprites.
-			if(bodypart == "tail_lizard" || bodypart == "tail_human" || bodypart == "tail_monkey" || bodypart == "tail_vox")
-				bodypart = "tail"
 
 			if(accessory.gender_specific)
 				accessory_overlay.icon_state = "[g]_[bodypart]_[accessory.icon_state]_[layertext]"

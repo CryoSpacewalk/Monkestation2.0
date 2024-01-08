@@ -247,17 +247,19 @@
 /obj/item/organ/external/snout/vox
 	name = "beak"
 	feature_key = "vox_snout"
-	preference = null
+	preference = "feature_vox_snout"
 	dna_block = DNA_VOX_SNOUT_BLOCK
 	external_bodytypes = BODYTYPE_VOX_BEAK
 	bodypart_overlay = /datum/bodypart_overlay/mutant/snout/vox
 
 /datum/bodypart_overlay/mutant/snout/vox
 	feature_key = "vox_snout"
-	draw_color = "#E5C04B"
 
 /datum/bodypart_overlay/mutant/snout/vox/get_global_feature_list()
 	return GLOB.vox_snouts_list
+
+/datum/bodypart_overlay/mutant/snout/vox/color_image(image/overlay, layer, obj/item/bodypart/limb)
+	overlay.color = "#E5C04B"
 
 ///A moth's antennae
 /obj/item/organ/external/antennae
@@ -415,7 +417,7 @@
 /datum/bodypart_overlay/mutant/vox_facial_hair
 	layers = EXTERNAL_FRONT|EXTERNAL_ADJACENT
 	feature_key = "vox_facial_hair"
-	color_source = ORGAN_COLOR_HAIR
+	color_source = ORGAN_COLOR_FACIAL_HAIR
 
 /datum/bodypart_overlay/mutant/vox_facial_hair/can_draw_on_bodypart(mob/living/carbon/human/human)
 	if(!(human.head?.flags_inv & HIDEHAIR) || (human.wear_mask?.flags_inv & HIDEHAIR))

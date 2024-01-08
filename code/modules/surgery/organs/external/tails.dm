@@ -110,9 +110,7 @@
 	name = "lizard tail"
 	desc = "A severed lizard tail. Somewhere, no doubt, a lizard hater is very pleased with themselves."
 	preference = "feature_lizard_tail"
-
 	bodypart_overlay = /datum/bodypart_overlay/mutant/tail/lizard
-
 	wag_flags = WAG_ABLE
 	dna_block = DNA_LIZARD_TAIL_BLOCK
 	///A reference to the paired_spines, since for some fucking reason tail spines are tied to the spines themselves.
@@ -156,9 +154,8 @@
 /obj/item/organ/external/tail/lizard/vox
 	name = "vox tail"
 	desc = "A severed vox tail."
-	preference = null
+	preference = "feature_vox_tail"
 	feature_key = "tail_vox"
-	render_key = "tail_vox"
 	dna_block = DNA_VOX_TAIL_BLOCK
 	bodypart_overlay = /datum/bodypart_overlay/mutant/tail/vox
 

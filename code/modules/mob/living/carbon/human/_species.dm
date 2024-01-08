@@ -211,6 +211,9 @@ GLOBAL_LIST_EMPTY(features_by_species)
 	/// A path to an outfit that is important for species life e.g. plasmaman outfit
 	var/datum/outfit/outfit_important_for_life
 
+	///Icon file used for eyes, defaults to 'icons/mob/human_face.dmi' if not set
+	var/species_eye_path
+
 	///Bitflag that controls what in game ways something can select this species as a spawnable source, such as magic mirrors. See [mob defines][code/__DEFINES/mobs.dm] for possible sources.
 	var/changesource_flags = NONE
 
@@ -698,7 +701,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 			add_pixel_y += height_offset
 
 			if(!eye_organ)
-				no_eyeslay = mutable_appearance('icons/mob/species/human/human_face.dmi', "eyes_missing", -FACE_LAYER)
+				no_eyeslay = mutable_appearance(species_eye_path || 'icons/mob/species/human/human_face.dmi', "eyes_missing", -FACE_LAYER)
 				no_eyeslay.pixel_x += add_pixel_x
 				no_eyeslay.pixel_y += add_pixel_y
 				standing += no_eyeslay
@@ -815,7 +818,12 @@ GLOBAL_LIST_EMPTY(features_by_species)
 
 	var/obj/item/bodypart/head/noggin = source.get_bodypart(BODY_ZONE_HEAD)
 
-
+	if(mutant_bodyparts["tail_vox"])
+		if(source.wear_suit && (source.wear_suit.flags_inv & HIDEJUMPSUIT))
+			bodyparts_to_add -= "tail_vox"
+	if(mutant_bodyparts["spines_vox"])
+		if(!source.dna.features["spines_vox"] || source.dna.features["spines_vox"] == "None" || source.wear_suit && (source.wear_suit.flags_inv & HIDEJUMPSUIT))
+			bodyparts_to_add -= "spines_vox"
 	if(mutant_bodyparts["ears"])
 		if(!source.dna.features["ears"] || source.dna.features["ears"] == "None" || source.head && (source.head.flags_inv & HIDEHAIR) || (source.wear_mask && (source.wear_mask.flags_inv & HIDEHAIR)) || !noggin || !IS_ORGANIC_LIMB(noggin))
 			bodyparts_to_add -= "ears"
@@ -841,11 +849,19 @@ GLOBAL_LIST_EMPTY(features_by_species)
 					accessory = GLOB.caps_list[source.dna.features["caps"]]
 				if("ipc_screen")
 					accessory = GLOB.ipc_screens_list[source.dna.features["ipc_screen"]]
+				if("tail_vox")
+					accessory = GLOB.tails_list_vox[source.dna.features["tail_vox"]]
+				if("spines_vox")
+					accessory = GLOB.spines_list_vox[source.dna.features["spines_vox"]]
 
 			if(!accessory || accessory.icon_state == "none")
 				continue
 
 			var/mutable_appearance/accessory_overlay = mutable_appearance(accessory.icon, layer = -layer)
+
+			//A little rename so we don't have to use tail_lizard or tail_human when naming the sprites.
+			if(bodypart == "tail_lizard" || bodypart == "tail_human" || bodypart == "tail_monkey" || bodypart == "tail_vox")
+				bodypart = "tail"
 
 			if(accessory.gender_specific)
 				accessory_overlay.icon_state = "[g]_[bodypart]_[accessory.icon_state]_[layertext]"
@@ -873,6 +889,11 @@ GLOBAL_LIST_EMPTY(features_by_species)
 								accessory_overlay.color = fixed_mut_color
 							else
 								accessory_overlay.color = source.dna.features["mcolor_secondary"]
+						if(MUTCOLORS_TERTIARY)
+							if(fixed_mut_color)
+								accessory_overlay.color = fixed_mut_color
+							else
+								accessory_overlay.color = source.dna.features["mcolor_tertiary"]
 						if(HAIR)
 							if(hair_color == "mutcolor")
 								accessory_overlay.color = source.dna.features["mcolor"]

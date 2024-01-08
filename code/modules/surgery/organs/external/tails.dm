@@ -154,3 +154,18 @@
 /obj/item/organ/external/tail/lizard/fake
 	name = "fabricated lizard tail"
 	desc = "A fabricated severed lizard tail. This one's made of synthflesh. Probably not usable for lizard wine."
+
+/obj/item/organ/external/tail/vox
+	name = "vox tail"
+	desc = "A severed vox tail."
+	preference = null
+	feature_key = "tail_vox"
+	render_key = "tail_vox"
+	dna_block = DNA_VOX_TAIL_BLOCK
+
+/datum/bodypart_overlay/mutant/tail/vox
+	color_source = ORGAN_COLOR_INHERIT
+	feature_key = "tail_vox"
+
+/datum/bodypart_overlay/mutant/tail/vox/get_global_feature_list()
+	return GLOB.tails_list_vox

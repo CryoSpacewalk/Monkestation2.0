@@ -145,6 +145,11 @@
 				return
 			var/mob/living/carbon/human/human_owner = ownerlimb.owner
 			draw_color = human_owner.dna.features["mcolor_secondary"]
+		if(ORGAN_COLOR_MUTTERTIARY)
+			if(!ishuman(ownerlimb.owner))
+				return
+			var/mob/living/carbon/human/human_owner = ownerlimb.owner
+			draw_color = human_owner.dna.features["mcolor_tertiary"]
 
 	return TRUE
 

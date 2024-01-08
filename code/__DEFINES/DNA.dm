@@ -87,9 +87,6 @@
 #define ANIME 13
 #define MUTCOLORS_SECONDARY 14
 #define SPECIES_FUR 15
-#define MUTCOLORS_TERTIARY 16
-#define HAIRCOLOR 25
-#define FACEHAIRCOLOR 26
 
 /// Use this if you want to change the race's color without the player being able to pick their own color. AKA special color shifting
 #define DYNCOLORS 16
@@ -108,6 +105,10 @@
 #define REVIVESBYHEALING 23
 #define NOHUSK 24
 #define NOMOUTH 25
+
+#define MUTCOLORS_TERTIARY 26
+#define HAIRCOLOR 27
+#define FACEHAIRCOLOR 28
 
 //organ slots
 #define ORGAN_SLOT_ADAMANTINE_RESONATOR "adamantine_resonator"

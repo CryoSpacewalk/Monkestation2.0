@@ -1089,7 +1089,7 @@
 
 /datum/sprite_accessory/facial_vox_hair
 	icon = 'icons/mob/vox_facial_hair.dmi'
-	color_src = FACEHAIR
+	color_src = FACEHAIRCOLOR
 
 /datum/sprite_accessory/facial_vox_hair/vox_beard
 	name = "Vox Beard"
@@ -1836,7 +1836,7 @@
 
 /datum/sprite_accessory/vox_hair
 	icon = 'icons/mob/vox_hair.dmi'
-	color_src = HAIR
+	color_src = HAIRCOLOR
 
 /datum/sprite_accessory/vox_hair/vox_afro
 	name = "Vox Afro"
@@ -1929,6 +1929,7 @@
 /datum/sprite_accessory/vox_snouts
 	icon = 'icons/mob/species/vox/vox_snouts.dmi'
 	em_block = TRUE
+	color_src = null
 
 /datum/sprite_accessory/vox_snouts/vox
 	name = "Vox Snout"

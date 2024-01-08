@@ -50,7 +50,6 @@
 
 		if((uniform_compatible && suit_compatible) || (suit_compatible && human_owner.wear_suit?.flags_inv & HIDEJUMPSUIT)) //If the uniform is hidden, it doesnt matter if its compatible
 			limb_id = "vox_digitigrade"
-
 		else
 			limb_id = SPECIES_VOX
 
@@ -73,6 +72,5 @@
 
 		if((uniform_compatible && suit_compatible) || (suit_compatible && human_owner.wear_suit?.flags_inv & HIDEJUMPSUIT)) //If the uniform is hidden, it doesnt matter if its compatible
 			limb_id = "vox_digitigrade"
-
 		else
 			limb_id = SPECIES_VOX

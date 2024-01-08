@@ -254,7 +254,6 @@
 
 /datum/bodypart_overlay/mutant/snout/vox
 	feature_key = "vox_snout"
-	color_source = ORGAN_COLOR_OVERRIDE
 	draw_color = "#E5C04B"
 
 /datum/bodypart_overlay/mutant/snout/vox/get_global_feature_list()
@@ -395,6 +394,7 @@
 /datum/bodypart_overlay/mutant/vox_hair
 	layers = EXTERNAL_FRONT|EXTERNAL_ADJACENT
 	feature_key = "vox_hair"
+	color_source = ORGAN_COLOR_HAIR
 
 /datum/bodypart_overlay/mutant/vox_hair/can_draw_on_bodypart(mob/living/carbon/human/human)
 	if(!(human.head?.flags_inv & HIDEHAIR) || (human.wear_mask?.flags_inv & HIDEHAIR))
@@ -415,6 +415,7 @@
 /datum/bodypart_overlay/mutant/vox_facial_hair
 	layers = EXTERNAL_FRONT|EXTERNAL_ADJACENT
 	feature_key = "vox_facial_hair"
+	color_source = ORGAN_COLOR_HAIR
 
 /datum/bodypart_overlay/mutant/vox_facial_hair/can_draw_on_bodypart(mob/living/carbon/human/human)
 	if(!(human.head?.flags_inv & HIDEHAIR) || (human.wear_mask?.flags_inv & HIDEHAIR))

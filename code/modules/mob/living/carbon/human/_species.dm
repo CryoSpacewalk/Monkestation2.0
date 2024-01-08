@@ -77,6 +77,8 @@ GLOBAL_LIST_EMPTY(features_by_species)
 	var/toxic_food = TOXIC
 	///flags for inventory slots the race can't equip stuff to. Golems cannot wear jumpsuits, for example.
 	var/no_equip_flags
+	///Affects the species' screams, for example: "Motharula buzzes!"
+	var/scream_verb = "screams"
 	///What languages this species can understand and say. Use a [language holder datum][/datum/language_holder] in this var.
 	var/species_language_holder = /datum/language_holder
 	/**
@@ -210,9 +212,6 @@ GLOBAL_LIST_EMPTY(features_by_species)
 	var/grab_sound
 	/// A path to an outfit that is important for species life e.g. plasmaman outfit
 	var/datum/outfit/outfit_important_for_life
-
-	///Icon file used for eyes, defaults to 'icons/mob/human_face.dmi' if not set
-	var/species_eye_path
 
 	///Bitflag that controls what in game ways something can select this species as a spawnable source, such as magic mirrors. See [mob defines][code/__DEFINES/mobs.dm] for possible sources.
 	var/changesource_flags = NONE
@@ -701,7 +700,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 			add_pixel_y += height_offset
 
 			if(!eye_organ)
-				no_eyeslay = mutable_appearance(species_eye_path || 'icons/mob/species/human/human_face.dmi', "eyes_missing", -FACE_LAYER)
+				no_eyeslay = mutable_appearance(eyes_icon || 'icons/mob/species/human/human_face.dmi', "eyes_missing", -FACE_LAYER)
 				no_eyeslay.pixel_x += add_pixel_x
 				no_eyeslay.pixel_y += add_pixel_y
 				standing += no_eyeslay

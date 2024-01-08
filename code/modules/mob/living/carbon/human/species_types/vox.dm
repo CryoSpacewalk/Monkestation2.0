@@ -2,7 +2,7 @@
 	// Bird-like humanoids
 	name = "Vox"
 	id = SPECIES_VOX
-	species_eye_path = 'icons/mob/species/vox/eyes.dmi'
+	eyes_icon = 'icons/mob/species/vox/eyes.dmi'
 	species_traits = list(
 		MUTCOLORS,
 		MUTCOLORS_SECONDARY,
@@ -24,11 +24,13 @@
 	mutanteyes = /obj/item/organ/internal/eyes/vox
 	mutantliver = /obj/item/organ/internal/liver/vox
 	breathid = "n2"
+	scream_verb = "shrieks"
 	external_organs = list(
 		/obj/item/organ/external/snout/vox = "Vox Snout",
 		/obj/item/organ/external/vox_hair = "None",
 		/obj/item/organ/external/vox_facial_hair = "None",
-		/obj/item/organ/external/tail/vox = "Vox Tail")
+		/obj/item/organ/external/tail/lizard/vox = "Vox Tail",
+		/obj/item/organ/external/spines/vox = "None")
 	liked_food = MEAT | FRIED
 	payday_modifier = 0.75
 	outfit_important_for_life = /datum/outfit/vox
@@ -50,10 +52,6 @@
 	human.facial_hair_color = "#FF9966"
 	human.eye_color_right = COLOR_TEAL
 	human.eye_color_left = COLOR_TEAL
-	var/obj/item/organ/external/vox_hair/hair = human.get_organ_slot(ORGAN_SLOT_EXTERNAL_VOX_HAIR)
-	hair.set_sprite("Vox Short Quills")
-	var/obj/item/organ/external/vox_facial_hair/facial_hair = human.get_organ_slot(ORGAN_SLOT_EXTERNAL_VOX_FACIAL_HAIR)
-	facial_hair.set_sprite("None")
 	human.update_body(TRUE)
 
 /datum/species/vox/pre_equip_species_outfit(datum/outfit/O, mob/living/carbon/human/equipping, visuals_only)
@@ -99,10 +97,10 @@
 	return randname
 
 /datum/species/vox/get_species_description()
-	return "'The Vox' refers to, in most sectors, the most commonly seen type: Vox Primalis. A peculiar hybrid of reptilian and avian characteristics hailing from massive space vessels often known as Arkships. \
-		Most work with utter loyalty to their creators, the Vox Auralis, though some have been known to reject it entirely and try to shape their own lives, but this is an uncommon occurrence. \
-		Either way, regardless of their loyalty to their creators, Vox are condemned to an eternity of life so long as their stack exists and can be placed in a new gene form, \
-		and the pigmented serial upon them will always be a reminder of their artificial origins."
+	return "The Vox are remnants of an ancient race, that originate from arkships. \
+	These bioengineered, reptilian, beaked, and quilled beings have a physiological caste system and follow 'The Inviolate' tenets.<br/><br/> \
+	Breathing pure nitrogen, they need specialized masks and tanks for survival outside their arkships. \
+	Their insular nature limits their involvement in broader galactic affairs, maintaining a distinct, yet isolated presence away from other species."
 
 /datum/species/vox/get_scream_sound(mob/living/carbon/human/vox)
 	return 'sound/voice/vox/shriek1.ogg'

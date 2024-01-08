@@ -131,18 +131,16 @@
 		paired_spines = null
 
 /obj/item/organ/external/tail/lizard/start_wag()
-	. = ..()
-
 	if(paired_spines)
 		var/datum/bodypart_overlay/mutant/spines/accessory = paired_spines.bodypart_overlay
 		accessory.wagging = TRUE
+	return ..()
 
 /obj/item/organ/external/tail/lizard/stop_wag()
-	. = ..()
-
 	if(paired_spines)
 		var/datum/bodypart_overlay/mutant/spines/accessory = paired_spines.bodypart_overlay
 		accessory.wagging = FALSE
+	return ..()
 
 ///Lizard tail bodypart overlay datum
 /datum/bodypart_overlay/mutant/tail/lizard
@@ -155,16 +153,17 @@
 	name = "fabricated lizard tail"
 	desc = "A fabricated severed lizard tail. This one's made of synthflesh. Probably not usable for lizard wine."
 
-/obj/item/organ/external/tail/vox
+/obj/item/organ/external/tail/lizard/vox
 	name = "vox tail"
 	desc = "A severed vox tail."
 	preference = null
 	feature_key = "tail_vox"
 	render_key = "tail_vox"
 	dna_block = DNA_VOX_TAIL_BLOCK
+	bodypart_overlay = /datum/bodypart_overlay/mutant/tail/vox
 
 /datum/bodypart_overlay/mutant/tail/vox
-	color_source = ORGAN_COLOR_INHERIT
+	color_source = ORGAN_COLOR_MUTTERTIARY
 	feature_key = "tail_vox"
 
 /datum/bodypart_overlay/mutant/tail/vox/get_global_feature_list()

@@ -155,7 +155,6 @@
 	name = "vox tail"
 	desc = "A severed vox tail."
 	preference = "feature_vox_tail"
-	feature_key = "tail_vox"
 	dna_block = DNA_VOX_TAIL_BLOCK
 	bodypart_overlay = /datum/bodypart_overlay/mutant/tail/vox
 

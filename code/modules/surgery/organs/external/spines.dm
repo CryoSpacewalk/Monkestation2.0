@@ -40,7 +40,7 @@
 	return GLOB.spines_list
 
 /datum/bodypart_overlay/mutant/spines/get_base_icon_state()
-	return (wagging ? "wagging_" : "") + sprite_datum.icon_state //add the wagging tag if we be wagging
+	return (wagging ? "wagging" : "") + sprite_datum.icon_state //add the wagging tag if we be wagging
 
 /datum/bodypart_overlay/mutant/spines/can_draw_on_bodypart(mob/living/carbon/human/human)
 	. = ..()
@@ -58,11 +58,12 @@
 	. = ..()
 	if(.)
 		paired_tail = locate(/obj/item/organ/external/tail/lizard/vox) in receiver.organs
+		paired_tail?.paired_spines = src
 
 ///Bodypart overlay for spines (wagging gets updated by tail)
 /datum/bodypart_overlay/mutant/spines/vox
 	feature_key = "spines_vox"
-	color_source = ORGAN_COLOR_MUTTERTIARY
+	color_source = ORGAN_COLOR_MUTSECONDARY
 
 /datum/bodypart_overlay/mutant/spines/vox/get_global_feature_list()
 	return GLOB.spines_list_vox
